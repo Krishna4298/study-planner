@@ -13,6 +13,17 @@ const userModel = require('./models/user');
 
 const app = express();
 
+uri = "mongodb+srv://studyplanner:bRUpb2N6FhkeCEew@studyplanner.8sl7ytp.mongodb.net/Studyplanner?retryWrites=true&w=majority&appName=Studyplanner";
+
+
+const connectDB = () => {
+    console.log("hello")
+    return mongooes.connect(uri, {
+        userNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+};
+
 // Load environment variables
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
