@@ -4,6 +4,7 @@ uri = "mongodb+srv://studyplanner:bRUpb2N6FhkeCEew@studyplanner.8sl7ytp.mongodb.
 
 
 const connectDB = () => {
+     console.log("hello")
     return mongooes.connect(uri, {
         userNewUrlParser: true,
         useUnifiedTopology: true,
