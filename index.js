@@ -1,6 +1,7 @@
 require('dotenv').config(); // Load .env at the very top
 
 const express = require('express');
+const connectDB = require("./connect");
 const mongoose = require('mongoose');
 const path = require('path');
 const jwt = require('jsonwebtoken');
@@ -58,6 +59,7 @@ app.get("/login", (req, res) => res.render("Authentication/login"));
 // Auth: Create user
 app.post('/create', async (req, res) => {
     try {
+        await connectDB();
         const { username, email, password } = req.body;
 
         const salt = await bcrypt.genSalt(10);
@@ -78,6 +80,7 @@ app.post('/create', async (req, res) => {
 // Auth: Login
 app.post('/login', async (req, res) => {
     try {
+        await connectDB();
         const user = await userModel.findOne({ email: req.body.email });
 
         if (!user) {
